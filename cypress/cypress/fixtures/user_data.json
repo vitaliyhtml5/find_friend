@@ -1,0 +1,10 @@
+{
+    "email": "test@test.com",
+    "unregisteredEmail": "lorem@lorem.com",
+    "password": 1,
+    "user": {
+        "name": ["Jenny", "Lisa", "Homer", "Janice", "Marcel"],
+        "age": [10, 25, 32, 45, 58],
+        "hobby": ["Food", "Games", "Fashion", "Guitar", "Work"]
+    }
+}

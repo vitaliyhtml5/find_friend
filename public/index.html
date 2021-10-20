@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Find a friend</title>
+	<link rel="shortcut icon" href="img/hands.svg" type="image/x-icon">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link rel="stylesheet" href="style.css">  
+</head>
+<body>
+    <header class="header-main">
+		<div class="container">
+			<div class="header-wrap">
+				<div class="header-logo">
+					<div class="logo__img"></div>
+					<h1 class="header-title">My friends</h1>
+				</div>
+				<div class="header-profile">
+					<a href="/profile" title="Profile"><img src="img/avatar.jpg" alt="avatar"></a>
+					<button title="Logout"></button>
+				</div>
+			</div>
+		</div>
+	</header>
+	<div class="container content-wrap">
+		<aside>
+			<ul class="aside-list">
+				<li class="aside-checked"><span class="material-icons">search</span>Show all</li>
+				<li><span class="material-icons">post_add</span>Add friends</li>
+				<li><span class="material-icons">create</span>Edit friends</li>
+				<li><span class="material-icons">delete</span>Delete friends</li>
+			</ul>
+		</aside>
+		<main>
+			<div class="show_all content-block content-block_hidden content-block_visible">
+				<div class="table-wrap">
+					<table>
+						<tbody></tbody>
+					</table>
+				</div>
+				<button>Show all friends</button>
+			</div>
+			<div class="add_friend content-block content-block_hidden">
+				<label>Name:<input></label>
+				<label>Age:<input></label>
+				<label>Hobby:<input></label>
+				<button>Add a friend</button>
+				<span></span>
+			</div>
+			<div class="change_friend content-block content-block_hidden">
+				<div class="name-friend change-name-friend"></div>
+				<label>Name:<input></label>
+				<label>Age:<input></label>
+				<label>Hobby:<input></label>
+				<button>Confirm</button>
+				<span></span>
+			</div>
+			<div class="delete_friend content-block content-block_hidden">
+				<div class="name-friend delete-name-friend"></div>
+				<table class="user-table">
+					<tr>
+						<th>Name:</th>
+						<td></td>
+					</tr>
+					<tr>
+						<th>Age:</th>
+						<td></td>
+					</tr>
+					<tr>
+						<th>Hobby:</th>
+						<td></td>
+					</tr>
+				</table>
+				<button>Delete a friend</button>
+				<span>Values were deleted</span>
+			</div>
+		</main>
+	</div>
+    <script src="script.js"></script>
+	<script src="logout.js"></script>
+</body>
+</html>
