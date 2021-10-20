@@ -22,5 +22,11 @@ app.use(updateRouter);
 const deleteRouter = require('./delete_friend');
 app.use(deleteRouter);
 
+const profileRouter = require('./get_profile');
+app.use(profileRouter);
+
+const profileUpdateRouter = require('./update_profile');
+app.use(profileUpdateRouter);
+
 
 app.listen(port, () => console.log(`Server is running on ${port} port`));

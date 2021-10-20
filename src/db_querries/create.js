@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
 
 // Add a new user
 const insertUser = (user_name, user_age, user_hobby, callback) => {
-    if (user_name === '' || user_age === '' || user_hobby === '') {
+    if (!user_name || !user_age || !user_hobby) {
         callback('Data is empty', undefined);
     } else {
         addUser();

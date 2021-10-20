@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
 
 // Update friend
 const updateUser = (old_user_id, user_name, user_age, user_hobby, callback) => {
-    if (old_user_id === '' || user_name === '' || user_age === '' || user_hobby === '') {
+    if (!old_user_id || !user_name || !user_age || !user_hobby) {
         callback('all fields should be filled', undefined);
     } else {
         makeUpdate();

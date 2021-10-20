@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
 
 // Delete user
 const deleteUser = (user_id, callback) => {
-    if (user_id === '') {
+    if (!user_id) {
         callback('id is missed', undefined)
     } else {
         makeDelete();

@@ -43,9 +43,35 @@
 						<td>Botany</td>
 					</tr>
 				</table>
+				<button>Update profile</button>
+				<span class="flash"></span>
 			</div>
 		</div>	
 	</main>
-	<script src="logout.js"></script>
+	<div class="overlay overlay-profile">
+		<div class="modal-profile">
+			<h3>Update profile</h3>
+			<table class="user-table">
+				<tr>
+					<th>Name:</th>
+					<td><input type="text"></td>
+				</tr>
+				<tr>
+					<th>Age:</th>
+					<td><input type="text"></td>
+				</tr>
+				<tr>
+					<th>Hobby:</th>
+					<td><input type="text"></td>
+				</tr>
+			</table>
+			<div class="profile-btn-wrap">
+				<button>Confirm</button>
+				<button>Cancel</button>
+			</div>	
+		</div>
+	</div>
+	<script type="module" src="scripts/profile.js"></script>
+	<!-- <script src="logout.js"></script> -->
 </body>
 </html>
