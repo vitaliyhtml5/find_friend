@@ -1,4 +1,7 @@
 'use strict';
+// Show table, pagination, sorting, search
+
+import {sortFriends} from './sort_users.js';
 
 const table = document.querySelector('.table-wrap table');
 const tableBody = document.querySelector('.table-wrap tbody');
@@ -57,8 +60,4 @@ function createPagination(data, start = 0) {
     });
 }
 
-
-
-
-
-export {getAllFriends};
+export {getAllFriends, showAll};

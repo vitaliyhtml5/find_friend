@@ -194,6 +194,7 @@ td,th {
 	font-size: 18px;
 }
 th {
+	position: relative;
 	border-top: none;
 	color: #fafafa;
 	background-color: #6a7cae;
@@ -210,6 +211,31 @@ th:first-child {
 }
 td:first-child {
 	text-transform: capitalize;
+}
+.table-wrap th>span {
+	position: relative;
+	z-index: 1;
+	display: inline;
+	opacity: 0.5;
+	min-width: 0;
+	min-height: 0;
+	width: 25px;
+	height: 25px;
+	margin: 0 0 0 10px;
+	padding: 0;
+	vertical-align: middle;
+	color: #fff;
+	background-color: transparent;
+	cursor: pointer;
+}
+.asc-active {
+	opacity: 1 !important;
+}
+.desc-active {
+	opacity: 1 !important;
+}
+.sort-default {
+	opacity: 0.5 !important;
 }
 .pagination {
 	display: none;
