@@ -169,12 +169,59 @@ main {
 .modal-profile button:active {
 	background-color: #3c3c95;
 }
-.show_all button {
-	margin: 30px auto;
+.search-wrap {
+	position: relative;
+	z-index: 2;
+	display: flex;
+	width: 75%;
+	margin: 15px auto 20px;
+}
+.search-wrap .material-icons {
+	position: absolute;
+	z-index: inherit;
+	opacity: 1;
+	display: inline;
+	top: 50%;
+	left: 7px;
+	width: 20px;
+	padding: 0;
+	color: #636e7b;
+	font-size: 20px;
+	font-weight: 400;
+	background-color: transparent;
+	transform: translateY(-50%);
+}
+.search-wrap>label {
+	position: relative;
+	width: 265px;
+	margin: 0;
+}
+.search-wrap input {
+	width: 100%;
+	padding: 10px 30px;
+}
+.search-wrap > label button {
+	min-width: 120px;
+	position: absolute;
+	top: 50%;
+	right: 5px;
+	min-width: 25px;
+	height: 80%;
+	min-height: 0;
+	padding: 0;
+	color: #6a7cae;
+	font-size: 15px;
+	font-weight: 400;
+	background-color: transparent;
+	transform: translateY(-50%);
+}
+.search-wrap button:hover {
+	background-color: transparent !important;
+	font-weight: 700;
 }
 .table-wrap {
 	width: 75%;
-	margin: 17px auto 10px auto;
+	margin: 0 auto 10px auto;
 	border: none;
 	border-radius: 8px;
 	text-align: center;
@@ -184,6 +231,8 @@ main {
 table {
 	width: 100%;
 	border-collapse: collapse;
+}
+.table-data {
 	table-layout:fixed; 
 	word-break: break-all;
 }
@@ -257,7 +306,8 @@ td:first-child {
 	background-color: transparent !important;
 	color: #5a5acc;
 }
-.pagination button:active {
+.pagination button:active,
+.search-wrap button {
 	background-color: transparent !important;
 }
 .delete_friend .user-table {
