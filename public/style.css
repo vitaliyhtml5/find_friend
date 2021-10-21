@@ -234,9 +234,6 @@ td:first-child {
 .desc-active {
 	opacity: 1 !important;
 }
-.sort-default {
-	opacity: 0.5 !important;
-}
 .pagination {
 	display: none;
 	justify-content: flex-end;

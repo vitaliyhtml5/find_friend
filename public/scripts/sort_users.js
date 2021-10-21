@@ -7,19 +7,18 @@ const sortBtn = document.querySelectorAll('.table-wrap th>span');
 
 sortBtn.forEach( (el, index) => {
     el.addEventListener('click', () => {
-        sortDefault();
         if (!el.classList.contains('asc-active') && !el.classList.contains('desc-active')) {
             sortFriends('/sort_friend_desc', columnsArr[index]);
-            el.classList.remove('sort-default');
+            sortDefault();
             el.classList.add('desc-active');
         } else if (el.classList.contains('desc-active')) {
             sortFriends('/sort_friend_asc', columnsArr[index]);
-            el.classList.remove('sort-default', 'desc-active');
+            sortDefault();
             el.classList.add('asc-active');
             el.textContent = 'north';
         } else if (el.classList.contains('asc-active')) {
             sortFriends('/sort_friend_desc', columnsArr[index]);
-            el.classList.remove('sort-default', 'asc-active');
+            sortDefault();
             el.classList.add('desc-active');
             el.textContent = 'south';
         } 
@@ -34,7 +33,8 @@ async function sortFriends(endpoint, column) {
 
 function sortDefault() {
     sortBtn.forEach(el => {
-        el.classList.add('sort-default');
+        el.classList.remove('desc-active');
+        el.classList.remove('asc-active');
         el.textContent = 'south';
     });
 }
