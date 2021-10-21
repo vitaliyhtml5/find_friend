@@ -13,6 +13,9 @@ app.use(express.static(path.join(__dirname, '../public'), {
 const showAllRouter = require('./get_friends');
 app.use(showAllRouter);
 
+const searchRouter = require('./search_friend');
+app.use(searchRouter);
+
 const addRouter = require('./add_friend');
 app.use(addRouter);
 
