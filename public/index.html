@@ -18,7 +18,7 @@
 					<h1 class="header-title">My friends</h1>
 				</div>
 				<div class="header-profile">
-					<a href="/profile" title="Profile"><img src="img/avatar.jpg" alt="avatar"></a>
+					<a href="/profile" title="Profile"><img src="img/user_avatar/avatar.jpg" alt="avatar"></a>
 					<button title="Logout"></button>
 				</div>
 			</div>
@@ -37,10 +37,18 @@
 			<div class="show_all content-block content-block_hidden content-block_visible">
 				<div class="table-wrap">
 					<table>
+						<thead>
+							<th>Name</th>
+							<th>Age</th>
+							<th>Hobby</th>
+						</thead>
 						<tbody></tbody>
 					</table>
 				</div>
-				<button>Show all friends</button>
+				<div class="pagination">
+					<button>1</button>
+					<button>2</button>
+				</div>
 			</div>
 			<div class="add_friend content-block content-block_hidden">
 				<label>Name:<input></label>
@@ -78,7 +86,7 @@
 			</div>
 		</main>
 	</div>
-    <script src="script.js"></script>
-	<script src="logout.js"></script>
+    <script type="module" src="script.js"></script>
+	<!-- <script src="logout.js"></script> -->
 </body>
 </html>

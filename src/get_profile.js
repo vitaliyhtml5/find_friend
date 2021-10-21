@@ -6,7 +6,7 @@ const router = new express.Router();
 const profile = require('./db_querries/profile');
 
 // Get profile
-router.get('/getProfileData', (req, res) => {
+router.get('/get_profile_data', (req, res) => {
     profile.selectProfile(req.query.id, (err, result) => {
         try {
             if (err) {

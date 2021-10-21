@@ -14,12 +14,14 @@ function getProfileData() {
 
 	getData();
 	async function getData() {
-		const res = await fetch(`/getProfileData?id=${userId}`);
+		const res = await fetch(`/get_profile_data?id=${userId}`);
 		const data = await res.json();
 
 		profileFields[0].textContent = data[0].name; 
 		profileFields[1].textContent = data[0].age; 
 		profileFields[2].textContent = data[0].hobby; 
+		document.querySelector('.header-profile img').src = `img/user_avatar/avatar.jpg`;
+		document.querySelector('.profile-wrap img').src = `img/user_avatar/avatar.jpg`;
 	}
 
 	profileBtn.addEventListener('click', () => {
@@ -38,7 +40,7 @@ function getProfileData() {
 	//Change profile
 	modalProfileBtn[0].addEventListener('click', () => {
 		const userData = {
-			user_id: 1,
+			user_id: userId,
 			user_name: modalProfileValue[0].value.trim(),
 			user_age: modalProfileValue[1].value.trim(),
 			user_hobby: modalProfileValue[2].value.trim(),

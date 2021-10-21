@@ -184,6 +184,8 @@ main {
 table {
 	width: 100%;
 	border-collapse: collapse;
+	table-layout:fixed; 
+	word-break: break-all;
 }
 td,th {
 	padding: 15px 10px;
@@ -208,6 +210,32 @@ th:first-child {
 }
 td:first-child {
 	text-transform: capitalize;
+}
+.pagination {
+	display: none;
+	justify-content: flex-end;
+	width: 75%;
+	margin: 0 auto;
+}
+.pagination button {
+	min-width: 0;
+	margin: 0 10px 0 0;
+	color: #636e7b;
+	background-color: transparent;
+}
+.pagination-btn_active {
+	color: #5a5acc !important;
+	cursor: default !important;
+}
+.pagination button:last-child {
+	margin-right: 10px;
+}
+.pagination button:hover {
+	background-color: transparent !important;
+	color: #5a5acc;
+}
+.pagination button:active {
+	background-color: transparent !important;
 }
 .delete_friend .user-table {
 	width: 80%;

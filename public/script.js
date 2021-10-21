@@ -1,6 +1,6 @@
 'use strict';
 
-
+import {getAllFriends} from './scripts/show_users.js';
 
 
 
