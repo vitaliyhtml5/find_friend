@@ -1,7 +1,20 @@
 'use strict';
 
 import {getAllFriends} from './scripts/show_users.js';
+import {logOut} from './scripts/logout.js';
 
+getAccessIndex();
+async function getAccessIndex() {
+    const res = await fetch('/get_access');
+    const data = await res.json();
+    
+    if (data.message === 'Unauthorized') {
+        window.location.href = '/login';
+    } else if (data.message === 'access is allowed') {
+        getAllFriends();
+        document.querySelector('.header-profile img').src = `img/user_avatar/${data.user.profile[0].avatar}`;
+    }
+}
 
 
 // document.querySelector('.show_all button').addEventListener('click', showAll);

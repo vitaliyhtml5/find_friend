@@ -10,6 +10,15 @@ app.use(express.static(path.join(__dirname, '../public'), {
     extensions: ['html']
 }));
 
+const loginRouter = require('./login');
+app.use(loginRouter);
+
+const logoutRouter = require('./logout');
+app.use(logoutRouter);
+
+const tokenRouter = require('./token_access');
+app.use(tokenRouter);
+
 const showAllRouter = require('./get_friends');
 app.use(showAllRouter);
 

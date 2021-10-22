@@ -8,7 +8,6 @@ const table = document.querySelector('.table-wrap table');
 const tableBody = document.querySelector('.table-wrap tbody');
 const pagination = document.querySelector('.pagination');
 
-getAllFriends();
 async function getAllFriends() {
     const res = await fetch('/show_all');
     const data = await res.json();
