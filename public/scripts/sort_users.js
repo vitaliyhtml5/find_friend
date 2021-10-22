@@ -2,11 +2,14 @@
 // Sorting
 import {showAll} from './show_users.js';
 
-const columnsArr = ['name', 'age', 'hobby'];
+const columnsArr = ['name', 'age', 'hobby', 'id'];
 const sortBtn = document.querySelectorAll('.table-wrap th>span');
 
 sortBtn.forEach( (el, index) => {
     el.addEventListener('click', () => {
+        document.querySelector('.search-wrap input').value = '';
+        document.querySelector('.search-wrap > label button').style.display = 'none';
+
         if (!el.classList.contains('asc-active') && !el.classList.contains('desc-active')) {
             sortFriends('/sort_friend_desc', columnsArr[index]);
             sortDefault();
@@ -38,5 +41,10 @@ function sortDefault() {
         el.textContent = 'south';
     });
 }
+
+document.querySelector('.search-wrap input').addEventListener('click', () => {
+    sortFriends('/sort_friend_asc', columnsArr[3]);
+    sortDefault();
+});
 
 export {sortFriends};

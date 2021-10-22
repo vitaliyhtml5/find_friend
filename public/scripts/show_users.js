@@ -2,6 +2,7 @@
 // Show table, pagination, sorting, search
 
 import {sortFriends} from './sort_users.js';
+import {searchFriends} from './search_users.js';
 
 const table = document.querySelector('.table-wrap table');
 const tableBody = document.querySelector('.table-wrap tbody');

@@ -201,10 +201,10 @@ main {
 	padding: 10px 30px;
 }
 .search-wrap > label button {
-	min-width: 120px;
 	position: absolute;
 	top: 50%;
 	right: 5px;
+	display: none;
 	min-width: 25px;
 	height: 80%;
 	min-height: 0;
@@ -218,6 +218,26 @@ main {
 .search-wrap button:hover {
 	background-color: transparent !important;
 	font-weight: 700;
+}
+.search-empty {
+	position: relative;
+	width: 300px !important;
+    height: 300px !important;
+	background: transparent url('img/binoculars.svg') 50%/150px no-repeat !important;
+	box-shadow: none !important;
+}
+.search-empty::before {
+	position: absolute;
+	content: 'No results found';
+	bottom: 20px;
+	left: 50%;
+	width: 100%;
+    height: auto;
+    color: #6a7cae;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+	transform: translateX(-50%);
 }
 .table-wrap {
 	width: 75%;
