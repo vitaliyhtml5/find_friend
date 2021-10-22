@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign up</title>
+	<link rel="shortcut icon" href="img/hands.svg" type="image/x-icon">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link rel="stylesheet" href="style.css">  
+</head>
+<body>
+    <header class="header-main">
+		<div class="container">
+			<div class="header-wrap">
+				<div class="header-logo">
+					<div class="logo__img"></div>
+					<h1 class="header-title">My friends</h1>
+				</div>
+				<a class="header-link" href="/login">Log in<span class="material-icons">login</span></a>
+			</div>
+		</div>
+	</header>
+	<main>
+		<div class="container">
+			<div class="login-wrap signup-wrap">
+				<h2>Sign up</h2>
+				<form>
+					<div class="first-step">
+						<label for="name">Name</label>
+						<input type="text" id="name">
+						<label for="age">Age</label>
+						<input type="text" id="age">
+						<label for="hobby">Hobby</label>
+						<input type="text" id="hobby">
+						<button>Choose avatar</button>
+						<button>Next</button>
+					</div>
+					<div class="second-step">
+						<label for="email">Email</label>
+						<input type="text" id="email">
+						<label for="password">Password</label>
+						<input type="password" id="password"><i></i>
+						<label for="confirm-password">Confirm password</label>
+						<input type="password" id="confirm-password"><i></i>
+						<button>Log in</button>
+					</div>
+				</form>
+				<span class="flash"></span>
+			</div>	
+		</div>	
+	</main>
+	<script type="module" src="scripts/login.js"></script>
+</body>
+</html>

@@ -1,5 +1,8 @@
 'use strict';
 
+import {logOut} from './logout.js';
+import {showAlert} from './alerts.js';
+
 //Get profile data
 getProfileData();
 function getProfileData() {
@@ -8,11 +11,21 @@ function getProfileData() {
 	const overlayProfile = document.querySelector('.overlay-profile');
 	const modalProfileValue = document.querySelectorAll('.overlay-profile input');
 	const modalProfileBtn = document.querySelectorAll('.profile-btn-wrap button');
+	let userId;
 	
-	// !!! Temporary value. It should be taken from cookies or jwt
-	const userId = 1;
+	getAccess();
+	async function getAccess() {
+		const res = await fetch('/get_access');
+		const data = await res.json();
+		
+		if (data.message === 'Unauthorized') {
+			window.location.href = '/error_pages/401';
+		} else if (data.message === 'access is allowed') {
+			userId = data.user.profile[0].id;
+			getData();
+		}	
+	}
 
-	getData();
 	async function getData() {
 		const res = await fetch(`/get_profile_data?id=${userId}`);
 		const data = await res.json();
@@ -84,5 +97,3 @@ function getProfileData() {
 		overlayProfile.classList.add('hide-overlay');
 	}
 }
-
-import {showAlert} from './alerts.js';
