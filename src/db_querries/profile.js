@@ -41,7 +41,26 @@ const updateProfile = (user_id, user_name, user_age, user_hobby, callback) => {
     }
 }
 
+// Update avatar
+
+const updateAvatar = (user_id, user_avatar, callback) => {
+    if (!user_id || !user_avatar) {
+        callback('incorrect data', undefined);
+    } else {
+        const q = `UPDATE user_profile SET avatar = '${user_avatar}' WHERE id = ${user_id};`;
+        connection.query(q, (err, result) => {
+            if (err) {
+                callback(err, undefined);
+            } else {
+                callback(undefined, {message: 'avatar was changed'});
+            }
+        })
+    }
+}
+
+
 module.exports = {
     selectProfile,
-    updateProfile
+    updateProfile,
+    updateAvatar
 }

@@ -14,7 +14,9 @@ secondStep.style.display = 'none';
 let userDataFirst;
 
 // Choose avatar
-document.querySelector('.avatar-wrap').addEventListener('click', chooseAvatar);
+document.querySelector('.avatar-wrap').addEventListener('click', () => {
+    chooseAvatar(false);
+});
 
 firstStepBtn.addEventListener('click', (e) => {
     e.preventDefault();

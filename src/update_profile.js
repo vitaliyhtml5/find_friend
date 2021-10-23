@@ -21,4 +21,20 @@ router.put('/update_profile', (req, res) => {
     });
 });
 
+// Update avatar
+router.put('/change_avatar', (req, res) => {
+    profile.updateAvatar(req.body.user_id, req.body.user_avatar, (err, result) => {
+        try {
+            if (err) {
+                res.status(400).send('incorrect data');
+            }
+            else {
+                res.send(result);
+            }
+        } catch (e) {
+            res.status(500).send({message: 'something went wrong'});
+        }
+    });
+});
+
 module.exports = router;

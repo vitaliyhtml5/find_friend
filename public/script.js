@@ -11,8 +11,10 @@ async function getAccessIndex() {
     if (data.message === 'Unauthorized') {
         window.location.href = '/login';
     } else if (data.message === 'access is allowed') {
-        getAllFriends();
-        document.querySelector('.header-profile img').src = `img/user_avatar/${data.user.profile[0].avatar}`;
+        const resProfile = await fetch(`/get_profile_data?id=${data.user.profile[0].id}`);
+        const profileData = await resProfile.json();
+        document.querySelector('.header-profile img').src = `img/user_avatar/${profileData[0].avatar}`;
+        getAllFriends(); 
     }
 }
 

@@ -512,6 +512,7 @@ input:focus {
 	margin: 0 auto;
 	border-radius: 8px;
 	box-shadow: 0 5px 16px 0 rgb(213 228 244 / 40%);
+	cursor: pointer;
 }
 .user-table {
 	width: 300px;
@@ -611,6 +612,9 @@ input:focus {
 }
 .overlay-avatar button {
 	margin: 10px auto 0;
+}
+.overlay-avatar .profile-btn-wrap {
+	width: 95%;
 }
 
 /* Log in */

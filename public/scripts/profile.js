@@ -2,6 +2,7 @@
 
 import {showAlert} from './alerts.js';
 import {logOut} from './logout.js';
+import {chooseAvatar, getSrcAvatar} from './choose_avatar.js';
 
 //Get profile data
 getProfileData();
@@ -95,4 +96,9 @@ function getProfileData() {
 		overlayProfile.classList.remove('show-overlay');
 		overlayProfile.classList.add('hide-overlay');
 	}
+
+	// Change avatar
+	document.querySelector('.profile-wrap>img').addEventListener('click', () => {
+		chooseAvatar(true, userId);
+	})
 }
