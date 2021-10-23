@@ -1,7 +1,7 @@
 'use strict';
 
-import {logOut} from './logout.js';
 import {showAlert} from './alerts.js';
+import {logOut} from './logout.js';
 
 //Get profile data
 getProfileData();
@@ -33,8 +33,8 @@ function getProfileData() {
 		profileFields[0].textContent = data[0].name; 
 		profileFields[1].textContent = data[0].age; 
 		profileFields[2].textContent = data[0].hobby; 
-		document.querySelector('.header-profile img').src = `img/user_avatar/avatar.jpg`;
-		document.querySelector('.profile-wrap img').src = `img/user_avatar/avatar.jpg`;
+		document.querySelector('.header-profile img').src = `img/user_avatar/${data[0].avatar}`;
+		document.querySelector('.profile-wrap img').src = `img/user_avatar/${data[0].avatar}`;
 	}
 
 	profileBtn.addEventListener('click', () => {
@@ -58,6 +58,7 @@ function getProfileData() {
 			user_age: modalProfileValue[1].value.trim(),
 			user_hobby: modalProfileValue[2].value.trim(),
 		}
+		
 		const re = /[a-zA-Z]/;
 		const reAge = /^[0-9]{1,3}$/;
 
@@ -67,7 +68,7 @@ function getProfileData() {
 			showAlert(document.querySelector('.flash'),'Age should be a number', false);
 		} else if (!re.test(modalProfileValue[0].value) || !re.test(modalProfileValue[2].value)) {
 			showAlert(document.querySelector('.flash'),'Only English chars can be used', false);
-		} else if (modalProfileValue[0].value.length > 20 || modalProfileValue[2].value > 20) {
+		} else if (modalProfileValue[0].value.length > 20 || modalProfileValue[2].value.length > 20) {
 			showAlert(document.querySelector('.flash'),'Max length is 20 chars', false);
 		} else if (!reAge.test(modalProfileValue[1].value)) {
 			showAlert(document.querySelector('.flash'),'Max length for age is 3 chars', false);
@@ -86,8 +87,6 @@ function getProfileData() {
 				closeOverlay();
 				getData();
 				showAlert(document.querySelector('.flash'), 'Profile has been updated', true);
-			} else if (res.status === 400) {
-				showAlert(document.querySelector('.flash'), 'Please check filled data', false);
 			}
 		}
 	});

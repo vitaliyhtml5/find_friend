@@ -10,6 +10,9 @@ app.use(express.static(path.join(__dirname, '../public'), {
     extensions: ['html']
 }));
 
+const signupRouter = require('./signup');
+app.use(signupRouter);
+
 const loginRouter = require('./login');
 app.use(loginRouter);
 

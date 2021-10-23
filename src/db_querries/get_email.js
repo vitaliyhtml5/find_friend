@@ -6,22 +6,23 @@ const connection = mysql.createConnection({
     database: 'api_friends'
 });
 
-// Get data of user in case of login
-const checkLogin = (email, password, callback) => {
-    if (!email || !password) {
+// Check if email is unique
+
+const checkEmail = (email, callback) => {
+    if (!email) {
         callback({message: 'data is missed'}, undefined);
     } else {
-        const q = `SELECT id, name, age, hobby, avatar FROM user_profile WHERE email = '${email}' AND password = SHA('${password}');`;
+        const q = `SELECT email FROM user_profile WHERE email = '${email}';`;
         connection.query(q, (err, result) => {
             if (err) {
                 callback('No connection to db', undefined);
             } else if (result.length === 0) {
-                callback({message: 'incorrect credentials'}, undefined);
+                callback(undefined, {message: 'email is not used'});
             } else {
-                callback(undefined, result);
+                callback(undefined, {message: 'email is used'});
             }
         });
     }
 }
 
-module.exports = checkLogin;
+module.exports = checkEmail;
