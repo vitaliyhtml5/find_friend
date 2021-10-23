@@ -1,6 +1,8 @@
 'use strict';
+
 // Sorting
 import {showAll} from './show_users.js';
+import {getUserId} from '../script.js';
 
 const columnsArr = ['name', 'age', 'hobby', 'id'];
 const sortBtn = document.querySelectorAll('.table-wrap th>span');
@@ -29,7 +31,7 @@ sortBtn.forEach( (el, index) => {
 });
 
 async function sortFriends(endpoint, column) {
-    const res = await fetch(`${endpoint}?column=${column}`);
+    const res = await fetch(`${endpoint}?column=${column}&user_id=${getUserId()}`);
     const data = await res.json();
     showAll(data);
 }

@@ -8,7 +8,7 @@ const searchFriends = require('./db_querries/search');
 // Search friend by name, age, hobby
 router.get('/search_user', (req, res) => {
     try {
-        searchFriends(req.query.value, (err, data) => {
+        searchFriends(req.query.value, req.query.user_id, (err, data) => {
             res.send(data);
         });
     } catch {

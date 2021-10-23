@@ -2,6 +2,7 @@
 
 // Add a new friend
 import {showAlert} from './alerts.js';
+import {getUserId} from '../script.js';
 
 const input = document.querySelectorAll('.add_friend input');
 document.querySelector('.add_friend button').addEventListener('click', addFriend);
@@ -28,7 +29,8 @@ async function addNewUser() {
     const userData = {
 		name: input[0].value,
 		age: input[1].value,
-		hobby: input[2].value
+		hobby: input[2].value,
+        user_id: getUserId()
 	};
 
     const res = await fetch('/add_user', {

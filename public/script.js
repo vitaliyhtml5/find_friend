@@ -5,6 +5,8 @@ import {addFriend} from './scripts/add_user.js';
 import {logOut} from './scripts/logout.js';
 
 getAccessIndex();
+let userId;
+
 async function getAccessIndex() {
     const res = await fetch('/get_access');
     const data = await res.json();
@@ -15,29 +17,34 @@ async function getAccessIndex() {
         const resProfile = await fetch(`/get_profile_data?id=${data.user.profile[0].id}`);
         const profileData = await resProfile.json();
         document.querySelector('.header-profile img').src = `img/user_avatar/${profileData[0].avatar}`;
-        getAllFriends(); 
+        userId = data.user.profile[0].id;
+        getAllFriends(getUserId()); 
     }
 }
+
+const getUserId = () => userId;
 
 // Change tabs
 const tabs = document.querySelectorAll('.aside-list li');
 const contentBlock = document.querySelectorAll('.content-block');
 
-tabs.forEach((element, index) => {
-	element.addEventListener('click', () => {
-        if (!tabs[0].classList.contains('aside-checked') && index === 0) {
-            getAllFriends();
+tabs.forEach((el, index) => {
+	el.addEventListener('click', () => {
+        if (!el.classList.contains('aside-checked') && index !== 1) {
+            getAllFriends(userId);
         }
 
 		tabs.forEach(tab => tab.classList.remove('aside-checked'));
-		element.classList.add('aside-checked');
+		el.classList.add('aside-checked');
 
-		contentBlock.forEach(element => element.classList.remove('content-block_visible'));
+		contentBlock.forEach(el => el.classList.remove('content-block_visible'));
 		contentBlock[index].classList.add('content-block_visible');
 	});
 });
 
 
+
+export {getUserId};
 
 
 

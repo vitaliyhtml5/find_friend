@@ -7,15 +7,15 @@ const connection = mysql.createConnection({
 });
 
 // Add a new user
-const insertUser = (user_name, user_age, user_hobby, callback) => {
-    if (!user_name || !user_age || !user_hobby) {
+const insertUser = (user_name, user_age, user_hobby, user_owner_id, callback) => {
+    if (!user_name || !user_age || !user_hobby || !user_owner_id) {
         callback('Data is empty', undefined);
     } else {
         addUser();
     }
 
     function addUser() {
-        const q = `INSERT INTO friends (name,age,hobby) VALUES ('${user_name}', ${user_age}, '${user_hobby}');`
+        const q = `INSERT INTO friends (name, age, hobby, user_profile_id) VALUES ('${user_name}', ${user_age}, '${user_hobby}', ${user_owner_id});`
         connection.query(q, (err, results) => {
             if (err) {
                 callback('No connection to db', undefined);

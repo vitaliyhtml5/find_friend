@@ -6,8 +6,8 @@ const connection = mysql.createConnection({
     database: 'api_friends'
 });
 
-const search = (searchValue, callback) => {
-    const q = `SELECT * FROM friends WHERE name LIKE '%${searchValue}%' OR age LIKE '%${searchValue}%' OR hobby LIKE '%${searchValue}%';`;
+const search = (searchValue, userId, callback) => {
+    const q = `SELECT id, name, age, hobby FROM friends WHERE (name LIKE '%${searchValue}%' OR age LIKE '%${searchValue}%' OR hobby LIKE '%${searchValue}%') AND user_profile_id = ${userId};`;
     connection.query(q, (err, result) => {
         if (err) {
             callback('No connection to db', undefined);

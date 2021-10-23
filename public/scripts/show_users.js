@@ -8,8 +8,8 @@ const table = document.querySelector('.table-wrap table');
 const tableBody = document.querySelector('.table-wrap tbody');
 const pagination = document.querySelector('.pagination');
 
-async function getAllFriends() {
-    const res = await fetch('/show_all');
+async function getAllFriends(user_id) {
+    const res = await fetch(`/show_all?user_id=${user_id}`);
     const data = await res.json();
     showAll(data);
 }

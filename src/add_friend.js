@@ -8,7 +8,7 @@ const addFriend = require('./db_querries/create');
 // Add a new friend
 router.post('/add_user', (req, res) => {
     try {
-        addFriend(req.body.name, req.body.age, req.body.hobby, (err, data) => {
+        addFriend(req.body.name, req.body.age, req.body.hobby, req.body.user_id, (err, data) => {
             if (err) {
                 res.status(400).send(err);
             } else {

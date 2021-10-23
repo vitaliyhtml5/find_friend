@@ -2,6 +2,7 @@
 
 // Search
 import {showAll, getAllFriends} from './show_users.js';
+import {getUserId} from '../script.js';
 
 const input = document.querySelector('.search-wrap input');
 const clearBtn = document.querySelector('.search-wrap > label button');
@@ -20,7 +21,7 @@ input.addEventListener('input', () => {
     if (input.value.length > 0) {
         searchFriends(input.value);
     } else {
-        getAllFriends();
+        getAllFriends(getUserId());
     }
 });
 
@@ -28,11 +29,11 @@ clearBtn.addEventListener('click', () => {
     input.value = '';
     clearBtn.style.display = 'none';
     showTable();
-    getAllFriends();
+    getAllFriends(getUserId());
 });
 
 async function searchFriends(searchValue) {
-    const res = await fetch(`/search_user?value=${searchValue}`);
+    const res = await fetch(`/search_user?value=${searchValue}&user_id=${getUserId()}`);
     const data = await res.json();
     
     if (data.length === 0) {
