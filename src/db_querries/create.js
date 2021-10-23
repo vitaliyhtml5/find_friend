@@ -20,7 +20,7 @@ const insertUser = (user_name, user_age, user_hobby, callback) => {
             if (err) {
                 callback('No connection to db', undefined);
             } else {
-                callback(undefined, 'user was added');
+                callback(undefined, {message: 'user was added'});
             }
         });
     }

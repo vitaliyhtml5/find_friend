@@ -1,6 +1,7 @@
 'use strict';
 
 import {getAllFriends} from './scripts/show_users.js';
+import {addFriend} from './scripts/add_user.js';
 import {logOut} from './scripts/logout.js';
 
 getAccessIndex();
@@ -19,7 +20,6 @@ async function getAccessIndex() {
 }
 
 // Change tabs
-
 const tabs = document.querySelectorAll('.aside-list li');
 const contentBlock = document.querySelectorAll('.content-block');
 
@@ -38,49 +38,8 @@ tabs.forEach((element, index) => {
 });
 
 
-// document.querySelector('.show_all button').addEventListener('click', showAll);
-// function showAll() {
-// 	fetch('http://127.0.0.1:3000/show_users')
-// 	.then(res => res.json())
-// 	.then(data => {
-// 		const friendName = data.map(item => item.name);
-// 		const friendAge = data.map(item => item.age);
-// 		const friendHobby = data.map(item => item.hobby);
-// 		if(document.querySelector('.table-wrap tr')) {
-// 			document.querySelectorAll('.table-wrap tr').forEach(element => element.remove());
-// 		}
-		
-// 		for(let i = -1; i < friendName.length; i++) {
-// 			const tr = document.createElement('tr');
-// 			document.querySelector('.show_all tbody').appendChild(tr);
-// 			if(i != -1) {
-// 				tr.innerHTML = `<td>${friendName[i]}</td><td>${friendAge[i]}</td><td>${friendHobby[i]}</td>`;
-// 			}
-// 			else {
-// 				tr.innerHTML = `<th>Name</th><th>Age</th><th>Hobby</th>`;
-// 			}
-// 		}
-// 	});
-// }
 
-// document.querySelector('.add_friend button').addEventListener('click', addFriend);
-// function addFriend() {
-// 	const input = document.querySelectorAll('.add_friend input');
-// 	const dataNew = {
-// 		name: input[0].value,
-// 		age: input[1].value,
-// 		hobby: input[2].value
-// 	}
-// 	fetch('http://127.0.0.1:3000/add_user', {
-// 		method: 'POST',
-// 		headers: {
-// 			'content-type': 'application/json'
-// 		},
-// 		body: JSON.stringify(dataNew)
-// 	})
-// 	.then(res => res.json())
-// 	.then(data => showStatus(document.querySelector('.add_friend span'),data.message));
-// }
+
 
 // let idUser = false;
 // document.querySelector('.change_friend button').addEventListener('click', changeFriend);
@@ -137,20 +96,6 @@ tabs.forEach((element, index) => {
 // 	.catch(err => err)
 // }
 
-// // Change tabs
-
-// const tabs = document.querySelectorAll('.aside-list li');
-// const contentBlock = document.querySelectorAll('.content-block');
-
-// tabs.forEach((element, index) => {
-// 	element.addEventListener('click', () => {
-// 		tabs.forEach(tab => tab.classList.remove('aside-checked'));
-// 		element.classList.add('aside-checked');
-
-// 		contentBlock.forEach(element => element.classList.remove('content-block_visible'));
-// 		contentBlock[index].classList.add('content-block_visible');
-// 	});
-// });
 
 // // Get all data for change
 // tabs[2].addEventListener('click', () => getAllNames('.change-name-friend',true));
