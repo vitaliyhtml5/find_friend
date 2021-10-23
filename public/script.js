@@ -18,6 +18,25 @@ async function getAccessIndex() {
     }
 }
 
+// Change tabs
+
+const tabs = document.querySelectorAll('.aside-list li');
+const contentBlock = document.querySelectorAll('.content-block');
+
+tabs.forEach((element, index) => {
+	element.addEventListener('click', () => {
+        if (!tabs[0].classList.contains('aside-checked') && index === 0) {
+            getAllFriends();
+        }
+
+		tabs.forEach(tab => tab.classList.remove('aside-checked'));
+		element.classList.add('aside-checked');
+
+		contentBlock.forEach(element => element.classList.remove('content-block_visible'));
+		contentBlock[index].classList.add('content-block_visible');
+	});
+});
+
 
 // document.querySelector('.show_all button').addEventListener('click', showAll);
 // function showAll() {
@@ -118,16 +137,6 @@ async function getAccessIndex() {
 // 	.catch(err => err)
 // }
 
-// // Flash messages
-
-// function showStatus(text,data) {
-// 	text.innerText = data;
-// 	text.classList.add('flash-close');
-// 	if(text.innerText.includes('Please Fill')) text.style.backgroundColor = '#f35e5e';
-// 	else if(text.innerText.includes('Choose')) text.style.backgroundColor = '#f35e5e';
-// 	else text.style.backgroundColor = '#3e9f60';
-// 	setTimeout(() => text.classList.remove('flash-close'), 3100);
-// }
 // // Change tabs
 
 // const tabs = document.querySelectorAll('.aside-list li');
