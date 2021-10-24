@@ -387,6 +387,7 @@ input:focus {
 }
 .list-name {
 	position: absolute;
+	z-index: 1;
 	overflow-y: hidden;
 	top: -8px;
 	right: 50%;

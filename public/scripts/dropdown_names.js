@@ -1,11 +1,15 @@
 'use strict';
 
 import {showAlert} from './alerts.js';
-import {updateFriend} from './update_user.js';
 import {getUserId} from '../script.js';
+import {updateFriend} from './update_user.js';
+import {deleteFriend} from './delete_user.js';
 
-let chosenFriend = false;
+let chosenFriendEdit;
+let chosenFriendDelete;
 function showDropdown(menu) {
+    chosenFriendEdit = false;
+    chosenFriendDelete = false;
     getAllData();
     async function getAllData() {
         const res = await fetch(`/show_all?user_id=${getUserId()}`);
@@ -55,19 +59,30 @@ function showDropdown(menu) {
                 }
                 if (menu === 'editFriend') {
                     changeFriend(userData);
-                    chosenFriend = true;
+                    chosenFriendEdit = true;
+                } 
+                if (menu === 'deleteFriend') {
+                    chosenFriendDelete = true;
+                    deleteChosenFriend(userData);
                 }
             }
         });
     }
      // Empty data and id validation
-     if (menu === 'editFriend') {
+    if (menu === 'editFriend') {
         const input = document.querySelectorAll('.change_friend input');
-        document.querySelector('.change_friend button').addEventListener('click', () => {
-            if (!chosenFriend) {
+        document.querySelector('.change_friend button').onclick = () => {
+            if (!chosenFriendEdit) {
                 showAlert(document.querySelector('.change_friend .flash'),'Please choose a friend', false);
             }
-        });
+        };
+    }
+    if (menu === 'deleteFriend') {
+        document.querySelector('.delete_friend button').onclick = () => {
+            if (!chosenFriendDelete) {
+                showAlert(document.querySelector('.delete_friend .flash'),'Please choose a friend', false);
+            }
+        };
     }
 }
 
@@ -104,7 +119,7 @@ function changeFriend(userData) {
             age: input[1].value,
             hobby: input[2].value,
             user_owner_id: getUserId()
-        }
+        };
         const res = await fetch('/update_user', {
             method: 'PUT',
             headers: {
@@ -115,11 +130,37 @@ function changeFriend(userData) {
         const result = await res.json();
         if (result.message === 'user was updated') {
             showAlert(document.querySelector('.change_friend .flash'),'Friend was updated', true);
-            chosenFriend = false;
+            chosenFriendEdit = false;
             input.forEach(el => el.value = '');
             updateFriend();
         } else {
             showAlert(document.querySelector('.change_friend .flash'),'Something went wrong', false);
+        }
+    }
+}
+
+// Delete a friend
+function deleteChosenFriend(userData) {
+    const td = document.querySelectorAll('.delete_friend .user-table td');
+    td[0].textContent = userData.name;
+    td[1].textContent = userData.age;
+    td[2].textContent = userData.hobby;
+    
+    document.querySelector('.delete_friend button').onclick = removeFriend;
+    
+    async function removeFriend() {
+        const res = await fetch(`/delete_user?id=${userData.id}&user_owner_id=${getUserId()}`, {
+            method: 'DELETE',
+        });
+        const result = await res.json();
+
+        if (result.message === 'user was deleted') {
+            showAlert(document.querySelector('.delete_friend .flash'),'Friend was removed', true);
+            chosenFriendDelete = false;
+            td.forEach(el => el.textContent = '');
+            deleteFriend();
+        } else {
+            showAlert(document.querySelector('.delete_friend .flash'),'Something went wrong', false);
         }
     }
 }
