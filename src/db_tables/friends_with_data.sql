@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Окт 24 2021 г., 21:28
+-- Время создания: Окт 19 2021 г., 19:28
 -- Версия сервера: 10.4.17-MariaDB
 -- Версия PHP: 7.3.27
 
@@ -31,9 +31,20 @@ CREATE TABLE `friends` (
   `id` int(3) NOT NULL,
   `name` varchar(30) DEFAULT NULL,
   `age` int(2) DEFAULT NULL,
-  `hobby` varchar(30) DEFAULT NULL,
-  `user_profile_id` int(11) DEFAULT NULL
+  `hobby` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Дамп данных таблицы `friends`
+--
+
+INSERT INTO `friends` (`id`, `name`, `age`, `hobby`) VALUES
+(1, 'Ross', 27, 'science'),
+(2, 'Monica', 24, 'order'),
+(3, 'Rachel', 24, 'fashion'),
+(4, 'Chandler', 27, 'jokes'),
+(5, 'Joe', 27, 'food'),
+(6, 'Phoebe', 28, 'songs');
 
 --
 -- Индексы сохранённых таблиц
@@ -43,8 +54,7 @@ CREATE TABLE `friends` (
 -- Индексы таблицы `friends`
 --
 ALTER TABLE `friends`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_profile_id` (`user_profile_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
@@ -54,7 +64,7 @@ ALTER TABLE `friends`
 -- AUTO_INCREMENT для таблицы `friends`
 --
 ALTER TABLE `friends`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

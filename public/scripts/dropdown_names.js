@@ -4,6 +4,7 @@ import {showAlert} from './alerts.js';
 import {getUserId} from '../script.js';
 import {updateFriend} from './update_user.js';
 import {deleteFriend} from './delete_user.js';
+import {addEmptyState, removeEmptyState} from './empty_state.js';
 
 let chosenFriendEdit;
 let chosenFriendDelete;
@@ -14,17 +15,12 @@ function showDropdown(menu) {
     async function getAllData() {
         const res = await fetch(`/show_all?user_id=${getUserId()}`);
         const allData = await res.json();
+        
         if (allData.length !== 0) {
-            document.querySelectorAll('.change_friend>*').forEach(el => el.style.visibility = 'visible');
-            document.querySelectorAll('.delete_friend>*').forEach(el => el.style.visibility = 'visible');
-            document.querySelector('.change_friend').classList.remove('empty-state-alt');
-            document.querySelector('.delete_friend').classList.remove('empty-state-alt');
+            removeEmptyState();
             createFriendsList(allData);
         } else {
-            document.querySelectorAll('.change_friend>*').forEach(el => el.style.visibility = 'hidden');
-            document.querySelectorAll('.delete_friend>*').forEach(el => el.style.visibility = 'hidden');
-            document.querySelector('.change_friend').classList.add('empty-state-alt');
-            document.querySelector('.delete_friend').classList.add('empty-state-alt');
+            addEmptyState();
         }
     }
     

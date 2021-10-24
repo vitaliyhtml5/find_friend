@@ -3,6 +3,7 @@
 
 import {sortFriends} from './sort_users.js';
 import {searchFriends} from './search_users.js';
+import {addEmptyState, removeEmptyState} from './empty_state.js';
 
 const table = document.querySelector('.table-wrap table');
 const tableBody = document.querySelector('.table-wrap tbody');
@@ -11,19 +12,18 @@ const pagination = document.querySelector('.pagination');
 async function getAllFriends(user_id) {
     const res = await fetch(`/show_all?user_id=${user_id}`);
     const data = await res.json();
-    showAll(data);
+    if (data.length !== 0) {
+        removeEmptyState();
+        showAll(data);
+    } else {
+        addEmptyState();
+    }
 }
 
 function showAll(data) {
     if (data.length !== 0) {
         table.style.display = 'table';
-        document.querySelector('.search-wrap').style.display = 'block';
-        document.querySelector('.show_all').classList.remove('empty-state-main');
         createTable(data, 0, 8);
-    } else {
-        table.style.display = 'none';
-        document.querySelector('.search-wrap').style.display = 'none';
-        document.querySelector('.show_all').classList.add('empty-state-main');
     }
 }
 
