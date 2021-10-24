@@ -2,6 +2,7 @@
 
 import {getAllFriends} from './scripts/show_users.js';
 import {addFriend} from './scripts/add_user.js';
+import {updateFriend} from './scripts/update_user.js';
 import {logOut} from './scripts/logout.js';
 
 getAccessIndex();
@@ -30,8 +31,11 @@ const contentBlock = document.querySelectorAll('.content-block');
 
 tabs.forEach((el, index) => {
 	el.addEventListener('click', () => {
-        if (!el.classList.contains('aside-checked') && index !== 1) {
+        if (!el.classList.contains('aside-checked') && index === 0) {
             getAllFriends(userId);
+        }
+        if (!el.classList.contains('aside-checked') && index === 2) {
+            updateFriend();
         }
 
 		tabs.forEach(tab => tab.classList.remove('aside-checked'));

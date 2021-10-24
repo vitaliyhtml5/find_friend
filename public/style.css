@@ -410,7 +410,7 @@ input:focus {
 	cursor: pointer;
 	transition: .4s;
 }
-.current-name {
+.header-list-name {
 	text-transform: none !important;
 }
 .name-friend ul li:hover {

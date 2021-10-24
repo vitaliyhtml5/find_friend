@@ -45,6 +45,8 @@ async function addNewUser() {
     if (result.message === 'user was added') {
         input.forEach(el => el.value = '');
         showAlert(document.querySelector('.add_friend .flash'),'Friend was added', true);
+    } else {
+        showAlert(document.querySelector('.add_friend .flash'),'Something went wrong', false);
     }
 }
 export {addFriend};

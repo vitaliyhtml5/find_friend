@@ -7,20 +7,20 @@ const connection = mysql.createConnection({
 });
 
 // Update friend
-const updateUser = (old_user_id, user_name, user_age, user_hobby, callback) => {
-    if (!old_user_id || !user_name || !user_age || !user_hobby) {
+const updateUser = (user_id, user_name, user_age, user_hobby, user_owner_id, callback) => {
+    if (!user_id || !user_name || !user_age || !user_hobby || !user_owner_id) {
         callback('all fields should be filled', undefined);
     } else {
         makeUpdate();
     }
 
     function makeUpdate() {
-        const q = `UPDATE friends SET name = '${user_name}', age = ${user_age}, hobby = '${user_hobby}' WHERE id = ${old_user_id};`
-        connection.query(q, (err, results) => {
+        const q = `UPDATE friends SET name = '${user_name}', age = ${user_age}, hobby = '${user_hobby}' WHERE user_profile_id = ${user_owner_id} AND id = ${user_id};`
+        connection.query(q, (err, result) => {
             if (err) {
                 callback('No connection to db', undefined);
             } else {
-                callback(undefined, 'user was updated');
+                callback(undefined, {message: 'user was updated'});
             }
         });
     }
