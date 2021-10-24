@@ -15,11 +15,15 @@ async function getAllFriends(user_id) {
 }
 
 function showAll(data) {
-    if (data !== '') {
+    if (data.length !== 0) {
+        table.style.display = 'table';
+        document.querySelector('.search-wrap').style.display = 'block';
+        document.querySelector('.show_all').classList.remove('empty-state-main');
         createTable(data, 0, 8);
     } else {
         table.style.display = 'none';
-        // !!! add function for empty state
+        document.querySelector('.search-wrap').style.display = 'none';
+        document.querySelector('.show_all').classList.add('empty-state-main');
     }
 }
 

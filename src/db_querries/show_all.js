@@ -26,19 +26,6 @@ const sortDesc = (column, userId, callback) => {
     makeQuery(q,callback);
 }
 
-// const filterValue = (arr, column, callback) => {
-//     let q = `SELECT * FROM friends WHERE ${column} = '${arr[0]}' `;
-//     for(let i = 1; i < arr.length; i++) {
-//         q += `OR ${column} = '${arr[i]}' `;
-//     }
-//     makeQuery(q,callback);
-// }
-
-// const distinctValue = (column, callback) => {
-//     const q = `SELECT DISTINCT ${column} FROM friends;`;
-//     makeQuery(q,callback);
-// }
-
 function makeQuery(q, callback) {
     connection.query(q, (err, results) => {
         if (err) {

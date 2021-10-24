@@ -250,7 +250,7 @@ main {
 	left: 50%;
 	width: 100%;
     height: auto;
-    color: #6a7cae;
+    color: #566fb9;
     font-size: 24px;
     font-weight: 700;
     letter-spacing: 0.5px;
@@ -424,7 +424,8 @@ input:focus {
 	right: 0;
 	width: 30px;
 	height: 30px;
-	color: #6a7cae;cursor: pointer;
+	color: #6a7cae;
+	cursor: pointer;
 }
 .name-friend+label {
 	margin-top: 60px;
@@ -652,6 +653,31 @@ input:focus {
     margin-left: auto;
 	background: url(img/eye.svg) no-repeat;
 	cursor: pointer;
+}
+
+/* Empty state */
+.empty-state-main,
+.empty-state-alt {
+	position: relative;
+	background: url(img/empty_state.png) 50% 20px/300px no-repeat;
+}
+.empty-state-main::before,
+.empty-state-alt::before {
+	position: absolute;
+	content: 'No friends yet';
+	bottom: 110px;
+	left: 53%;
+	width: 300px;
+	height: 50px;
+	color: #566fb9;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+	text-align: center;
+	transform: translateX(-50%);
+}
+.empty-state-alt::before {
+	left: 57%;
 }
 
 /* Error page */

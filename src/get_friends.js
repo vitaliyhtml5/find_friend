@@ -55,31 +55,4 @@ router.get('/sort_friend_desc', (req, res) => {
     }
 });
 
-// // Filter by value
-// const tempFilterValue = ['Ross', 'Rachel', 'Brian'];
-// const tempFilterColumn = 'name';
-// // Temp values, it should be array from req.query
-// router.get('/filter_value', (req, res) => {
-//     try {
-//         showFriends.filterValue(tempFilterValue, tempFilterColumn, (err, data) => {
-//             res.send(data);
-//         });
-//     } catch(e) {
-//         res.status(500).send({message: 'something went wrong'});
-//     }
-// });
-
-// // Get distinct value
-// const tempcolumnDistinct = 'hobby';      
-// // Temp column, it should be req.query
-// router.get('/get_dictinct_value', (req, res) => {
-//     try {
-//         showFriends.distinctValue(tempcolumnDistinct, (err, data) => {
-//             res.send(data);
-//         });
-//     } catch(e) {
-//         res.status(500).send({message: 'something went wrong'});
-//     }
-// });
-
 module.exports = router;
