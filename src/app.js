@@ -5,7 +5,6 @@ const port = process.env.PORT || 3000;
 const app = express();
 app.use(express.json());
 
-
 app.use(express.static(path.join(__dirname, '../public'), {
     extensions: ['html']
 }));
@@ -42,6 +41,9 @@ app.use(profileRouter);
 
 const profileUpdateRouter = require('./update_profile');
 app.use(profileUpdateRouter);
+
+const errorPageRouter = require('./error_pages');
+app.use(errorPageRouter);
 
 
 app.listen(port, () => console.log(`Server is running on ${port} port`));
