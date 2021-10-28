@@ -2,7 +2,8 @@
   "newUser": {
     "name": ["John", "Loretta ", " Zack", "Abraham", "Dorothy"],
     "age": [9, 20, 49, 99, 100],
-    "hobby": [" basketball", "collecting_stamps ", "90th songs", "Playing the guitar", "swimming in the sea!"]
+    "hobby": [" basketball", "collecting_stamps ", "90th songs", "Playing the guitar", "swimming in the sea!"],
+    "email": ["unregistered@mail.com"]
   },
   "registeredUser": [
     {
@@ -28,10 +29,10 @@
     "hobbyFormat": ["電腦遊戲", "Компьютерные игры", "ריחן"],
     "hobbyLength": ["Largest swimming pool"]
   },
-  "correctEmail": ["test@test.io", "lorem@gmail.com", "manager@yahoo.net"],
+  "correctEmail": ["test@test.io ", " lorem@gmail.com", "manager@yahoo.net"],
   "incorrectEmail": ["@example.com", "abs.mail.com", "abc@405@gmail.com", "abc.def@mail", "abc.def@mail.c"],
   "incorrectEmailLength": ["tevxslqozqf@dbtest.io"],
-  "correctPassword": ["1234567890", "&%@!#*.'/<>[]{}", "()|_=+-/,?:;", "EOPABSRZ>=N", "wingzoifgsdxvjuarniq", "Az@lor_e65Y4"],
+  "correctPassword": [" 1234567890", "&%@!#*.'/<>[]{} ", "()|_=+-/,?:;", "EOPABSRZ>=N", "wingzoifgsdxvjuarniq", "Az@lor_e65Y4"],
   "incorrectPassword": ["s]}p765dasd@sadDAS&34"],
   "incorrectPasswordLength": ["A21dsz@l!or_e65Y%4{dF"]
 }

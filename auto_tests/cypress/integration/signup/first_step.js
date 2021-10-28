@@ -1,6 +1,6 @@
 ///<reference types="Cypress" />
 
-describe('New guest user signs up into the system on the first step', () => {
+describe('New guest user signs up on the first step', () => {
     before(() => cy.fixture('user_data').then(data => globalThis.data = data));
     beforeEach(() => cy.visit('/signup'));
 
