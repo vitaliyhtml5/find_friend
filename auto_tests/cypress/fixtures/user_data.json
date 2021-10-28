@@ -1,0 +1,37 @@
+{
+  "newUser": {
+    "name": ["John", "Loretta ", " Zack", "Abraham", "Dorothy"],
+    "age": [9, 20, 49, 99, 100],
+    "hobby": [" basketball", "collecting_stamps ", "90th songs", "Playing the guitar", "swimming in the sea!"]
+  },
+  "registeredUser": [
+    {
+    "name": "Vasiliy",
+    "age": 25,
+    "hobby": "Botany",
+    "email": "test@test.com",
+    "password": 1
+    },
+    {
+      "name": "Julia",
+      "age": 24,
+      "hobby": "Flowers",
+      "email": "test2@test.com",
+      "password": 1
+    }
+  ],
+  "IncorrectUserData": {
+    "nameFormat": ["Василий", "罗勒", "Βασιλικός", "ריחן"],
+    "nameLength": ["Elizabeth Oldwestside"],
+    "ageFormat": [-2, "twenty", "around 30", "20+"],
+    "ageLength": ["1000", "0101"],
+    "hobbyFormat": ["電腦遊戲", "Компьютерные игры", "ריחן"],
+    "hobbyLength": ["Largest swimming pool"]
+  },
+  "correctEmail": ["test@test.io", "lorem@gmail.com", "manager@yahoo.net"],
+  "incorrectEmail": ["@example.com", "abs.mail.com", "abc@405@gmail.com", "abc.def@mail", "abc.def@mail.c"],
+  "incorrectEmailLength": ["tevxslqozqf@dbtest.io"],
+  "correctPassword": ["1234567890", "&%@!#*.'/<>[]{}", "()|_=+-/,?:;", "EOPABSRZ>=N", "wingzoifgsdxvjuarniq", "Az@lor_e65Y4"],
+  "incorrectPassword": ["s]}p765dasd@sadDAS&34"],
+  "incorrectPasswordLength": ["A21dsz@l!or_e65Y%4{dF"]
+}
