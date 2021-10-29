@@ -1,12 +1,13 @@
 {
   "newUser": {
-    "name": ["John", "Loretta ", " Zack", "Abraham", "Dorothy"],
+    "name": ["John", "Loretta", "Zack", "Abraham", "Dorothy"],
     "age": [9, 20, 49, 99, 100],
-    "hobby": [" basketball", "collecting_stamps ", "90th songs", "Playing the guitar", "swimming in the sea!"],
+    "hobby": ["basketball", "collecting_stamps", "90th songs", "Playing the guitar", "swimming in the sea!"],
     "email": ["unregistered@mail.com"]
   },
   "registeredUser": [
     {
+    "id": 1,
     "name": "Vasiliy",
     "age": 25,
     "hobby": "Botany",
@@ -14,6 +15,7 @@
     "password": 1
     },
     {
+      "id": 2,
       "name": "Julia",
       "age": 24,
       "hobby": "Flowers",
