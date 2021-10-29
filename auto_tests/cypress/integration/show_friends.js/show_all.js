@@ -5,8 +5,8 @@ describe(`User shows friend's data on Main page`, () => {
     before(() => {
         cy.fixture('user_data').then(data => {
             globalThis.data = data;
-            idUser = data.registeredUser[0].id;
-            cy.getToken(data.registeredUser[0].email, data.registeredUser[0].password).then(token => {
+            idUser = data.registeredUser[1].id;
+            cy.getToken(data.registeredUser[1].email, data.registeredUser[1].password).then(token => {
                 cy.setCookie('token', token);
             });
         });
@@ -40,32 +40,32 @@ describe(`User shows friend's data on Main page`, () => {
     });
 
     it('User sorts order of data in the table in desc order', () => {
-        cy.getSortData('sort_friend_desc', 'name', 1).then(data => {
+        cy.getSortData('sort_friend_desc', 'name', idUser).then(data => {
             const dataArrName = data.map(item => item.name);
             checkSortData(dataArrName, 0); 
         });
-        cy.getSortData('sort_friend_desc', 'age', 1).then(data => {
+        cy.getSortData('sort_friend_desc', 'age', idUser).then(data => {
             const dataArrAge = data.map(item => item.age);
             checkSortData(dataArrAge, 1);
         });
-        cy.getSortData('sort_friend_desc', 'hobby', 1).then(data => {
+        cy.getSortData('sort_friend_desc', 'hobby', idUser).then(data => {
             const dataArrHobby = data.map(item => item.hobby);
             checkSortData(dataArrHobby, 2); 
         });     
     });
 
     it('User sorts order of data in the table in asc order', () => {
-        cy.getSortData('sort_friend_asc', 'name', 1).then(data => {
+        cy.getSortData('sort_friend_asc', 'name', idUser).then(data => {
             const dataArrName = data.map(item => item.name);
             getDescOrder(0);
             checkSortData(dataArrName, 0); 
         });
-        cy.getSortData('sort_friend_asc', 'age', 1).then(data => {
+        cy.getSortData('sort_friend_asc', 'age', idUser).then(data => {
             const dataArrAge = data.map(item => item.age);
             getDescOrder(1);
             checkSortData(dataArrAge, 1);
         });
-        cy.getSortData('sort_friend_asc', 'hobby', 1).then(data => {
+        cy.getSortData('sort_friend_asc', 'hobby', idUser).then(data => {
             const dataArrHobby = data.map(item => item.hobby);
             getDescOrder(2);
             checkSortData(dataArrHobby, 2); 
