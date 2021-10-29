@@ -54,13 +54,13 @@ describe('New guest user signs up on the first step', () => {
 
     it('[Negative] Guest user tries to follow to the 2nd step with incorrect length of fields', () => {
         cy.fillMainData('#name', '#age', '#hobby');
-        cy.incorrectLengthText('#name', data.IncorrectUserData.nameLength[0], 'Next');
+        cy.incorrectLengthText('#name', data.incorrectUserData.nameLength[0], 'Next');
         checkFirstStep();
         cy.fillMainData('#name', '#age', '#hobby');
-        cy.incorrectLengthAge('#age', data.IncorrectUserData.ageLength[0], 'Next');
+        cy.incorrectLengthAge('#age', data.incorrectUserData.ageLength[0], 'Next');
         checkFirstStep();
         cy.fillMainData('#name', '#age', '#hobby');
-        cy.incorrectLengthText('#hobby', data.IncorrectUserData.hobbyLength[0], 'Next');
+        cy.incorrectLengthText('#hobby', data.incorrectUserData.hobbyLength[0], 'Next');
         checkFirstStep();
 
         function checkFirstStep() {
@@ -73,10 +73,10 @@ describe('New guest user signs up on the first step', () => {
     it('[Negative] Guest user tries to follow to the 2nd step with incorrect data of name/hobby', () => {
         let random = length => Math.floor(Math.random() * length);
         cy.fillMainData('#name', '#age', '#hobby');
-        cy.incorrectDataText('#name', data.IncorrectUserData.nameFormat[random(4)], 'Next');
+        cy.incorrectDataText('#name', data.incorrectUserData.nameFormat[random(4)], 'Next');
         checkFirstStep();
         cy.fillMainData('#name', '#age', '#hobby');
-        cy.incorrectDataText('#hobby', data.IncorrectUserData.hobbyFormat[random(3)], 'Next');
+        cy.incorrectDataText('#hobby', data.incorrectUserData.hobbyFormat[random(3)], 'Next');
         checkFirstStep();
 
         function checkFirstStep() {
@@ -87,9 +87,9 @@ describe('New guest user signs up on the first step', () => {
     });
 
     it('[Negative] Guest user tries to follow to the 2nd step with incorrect data of age', () => {
-        let random = () => Math.floor(Math.random() * data.IncorrectUserData.ageFormat.length);
+        let random = () => Math.floor(Math.random() * data.incorrectUserData.ageFormat.length);
         cy.fillMainData('#name', '#age', '#hobby');
-        cy.incorrectDataAge('#age', data.IncorrectUserData.ageFormat[random()], 'Next');
+        cy.incorrectDataAge('#age', data.incorrectUserData.ageFormat[random()], 'Next');
         cy.get('.first-step').should('not.have.css', 'display', 'none');
     });
 });

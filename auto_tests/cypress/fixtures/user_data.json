@@ -23,7 +23,15 @@
       "password": 1
     }
   ],
-  "IncorrectUserData": {
+  "registeredUserEmpty": {
+    "id": 3,
+    "name": "Arnold",
+    "age": 18,
+    "hobby": "Traveling",
+    "email": "test3@test.com",
+    "password": 1
+  },
+  "incorrectUserData": {
     "nameFormat": ["Василий", "罗勒", "Βασιλικός", "ריחן"],
     "nameLength": ["Elizabeth Oldwestside"],
     "ageFormat": [-2, "twenty", "around 30", "20+"],

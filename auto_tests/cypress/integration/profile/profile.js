@@ -115,13 +115,13 @@ describe('User changes data on Profile page', () => {
 
         cy.contains('button', 'Update profile').click();
         fillData(data.newUser.name[0], data.newUser.age[0], data.newUser.hobby[0]);
-        cy.incorrectLengthText(field[0], data.IncorrectUserData.nameLength[0], 'Confirm');
+        cy.incorrectLengthText(field[0], data.incorrectUserData.nameLength[0], 'Confirm');
         checkOldData();
         fillData(data.newUser.name[0], data.newUser.age[0], data.newUser.hobby[0]);
-        cy.incorrectLengthAge(field[1], data.IncorrectUserData.ageLength[0], 'Confirm');
+        cy.incorrectLengthAge(field[1], data.incorrectUserData.ageLength[0], 'Confirm');
         checkOldData();
         fillData(data.newUser.name[0], data.newUser.age[0], data.newUser.hobby[0]);
-        cy.incorrectLengthText(field[2], data.IncorrectUserData.hobbyLength[0], 'Confirm');
+        cy.incorrectLengthText(field[2], data.incorrectUserData.hobbyLength[0], 'Confirm');
         checkOldData();
     });
 
@@ -131,20 +131,20 @@ describe('User changes data on Profile page', () => {
 
         cy.contains('button', 'Update profile').click();
         fillData(data.newUser.name[0], data.newUser.age[0], data.newUser.hobby[0]);
-        cy.incorrectDataText(field[0], data.IncorrectUserData.nameFormat[random(4)], 'Confirm');
+        cy.incorrectDataText(field[0], data.incorrectUserData.nameFormat[random(4)], 'Confirm');
         checkOldData();
         fillData(data.newUser.name[0], data.newUser.age[0], data.newUser.hobby[0]);
-        cy.incorrectDataText(field[1], data.IncorrectUserData.hobbyFormat[random(3)], 'Confirm');
+        cy.incorrectDataText(field[1], data.incorrectUserData.hobbyFormat[random(3)], 'Confirm');
         checkOldData();
     });
     
     it('[Negative] User tries to change profile with incorrect length of fields with incorrect data of name/hobby', () => {
         const field = '.overlay-profile tr:nth-child(2) input';
-        let random = () => Math.floor(Math.random() * data.IncorrectUserData.ageFormat.length);
+        let random = () => Math.floor(Math.random() * data.incorrectUserData.ageFormat.length);
 
         cy.contains('button', 'Update profile').click();
         fillData(data.newUser.name[0], data.newUser.age[0], data.newUser.hobby[0]);
-        cy.incorrectDataAge(field, data.IncorrectUserData.ageFormat[random()], 'Confirm');
+        cy.incorrectDataAge(field, data.incorrectUserData.ageFormat[random()], 'Confirm');
         checkOldData();
     });
 
