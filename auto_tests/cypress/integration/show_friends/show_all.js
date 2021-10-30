@@ -5,8 +5,8 @@ describe(`User shows friend's data on Main page`, () => {
     before(() => {
         cy.fixture('user_data').then(data => {
             globalThis.data = data;
-            idUser = data.registeredUser[1].id;
-            cy.getToken(data.registeredUser[1].email, data.registeredUser[1].password).then(token => {
+            idUser = data.registeredUser[0].id;
+            cy.getToken(data.registeredUser[0].email, data.registeredUser[0].password).then(token => {
                 cy.setCookie('token', token);
             });
         });
@@ -14,6 +14,10 @@ describe(`User shows friend's data on Main page`, () => {
     beforeEach(() => {
         Cypress.Cookies.preserveOnce('token');
         cy.visit('/');
+    });
+
+    it('User navigates to Show all tab from another tab in Main menu', () => {
+        cy.switchTab(0, 1, '.show_all');
     });
 
     it('User views all filled data in the table including pagination', () => {

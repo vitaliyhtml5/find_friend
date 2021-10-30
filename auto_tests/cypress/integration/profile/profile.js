@@ -125,7 +125,7 @@ describe('User changes data on Profile page', () => {
         checkOldData();
     });
 
-    it('[Negative] User tries to change profile with incorrect length of fields with incorrect data of name/hobby', () => {
+    it('[Negative] User tries to change profile with incorrect data of name/hobby', () => {
         const field = ['.overlay-profile tr:nth-child(1) input', '.overlay-profile tr:nth-child(3) input'];
         let random = length => Math.floor(Math.random() * length);
 
@@ -138,7 +138,7 @@ describe('User changes data on Profile page', () => {
         checkOldData();
     });
     
-    it('[Negative] User tries to change profile with incorrect length of fields with incorrect data of name/hobby', () => {
+    it('[Negative] User tries to change profile with incorrect data of age', () => {
         const field = '.overlay-profile tr:nth-child(2) input';
         let random = () => Math.floor(Math.random() * data.incorrectUserData.ageFormat.length);
 

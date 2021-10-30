@@ -34,7 +34,7 @@
   "incorrectUserData": {
     "nameFormat": ["Василий", "罗勒", "Βασιλικός", "ריחן"],
     "nameLength": ["Elizabeth Oldwestside"],
-    "ageFormat": [-2, "twenty", "around 30", "20+"],
+    "ageFormat": ["twenty", "around 30", "20+"],
     "ageLength": ["1000", "0101"],
     "hobbyFormat": ["電腦遊戲", "Компьютерные игры", "ריחן"],
     "hobbyLength": ["Largest swimming pool"]
