@@ -1,6 +1,7 @@
 ///<reference types="Cypress"/>
 
 describe('User adds a friend in Add friends tab', () => {
+    const field = ['.add_friend label:nth-child(1) input', '.add_friend label:nth-child(2) input', '.add_friend label:nth-child(3) input'];
     let idUser;
     let random = length => Math.floor(Math.random() * length);
     before(() => {
@@ -37,10 +38,8 @@ describe('User adds a friend in Add friends tab', () => {
         });
     });
 
-    // Negative scenarious
+    // Negative scenarios
     it('[Negative] User tries to add a friend with empty fields', () => {
-        const field = ['.add_friend label:nth-child(1)  input', '.add_friend label:nth-child(2)  input', '.add_friend label:nth-child(3)  input'];
-
         fillFields();
         cy.emptyField(field[0], 'Add a friend');
         clearFields();
@@ -52,7 +51,6 @@ describe('User adds a friend in Add friends tab', () => {
     });
 
     it('[Negative] User tries to add a friend with incorrect length of fields', () => {
-        const field = ['.add_friend label:nth-child(1) input', '.add_friend label:nth-child(2) input', '.add_friend label:nth-child(3) input'];
         const value = [data.incorrectUserData.nameLength[0], data.incorrectUserData.ageLength[0], data.incorrectUserData.hobbyLength[0]];
 
         fillFields();
@@ -71,14 +69,13 @@ describe('User adds a friend in Add friends tab', () => {
     });
 
     it('[Negative] User tries to add a friend with incorrect data of name/hobby', () => {
-        const field = ['.add_friend label:nth-child(1) input', '.add_friend label:nth-child(3) input'];
         const value = [data.incorrectUserData.nameFormat[random(data.incorrectUserData.nameFormat.length-1)], data.incorrectUserData.hobbyFormat[random(data.incorrectUserData.hobbyFormat.length-1)]];
 
         fillFields();
         cy.incorrectDataText(field[0], value[0], 'Add a friend');
         clearFields();
         fillFields();
-        cy.incorrectDataText(field[1], value[1], 'Add a friend');
+        cy.incorrectDataText(field[2], value[1], 'Add a friend');
         cy.getFriends(idUser).then(res => {
             expect(value[0]).not.equal(res[res.length - 1].name);
             expect(value[1]).not.equal(res[res.length - 1].hobby);
@@ -88,7 +85,7 @@ describe('User adds a friend in Add friends tab', () => {
     it('[Negative] User tries to add a friend with incorrect data of age', () => {
         const value = data.incorrectUserData.ageFormat[random(data.incorrectUserData.ageFormat.length-1)];
         fillFields();
-        cy.incorrectDataAge('.add_friend label:nth-child(2) input', value, 'Add a friend');
+        cy.incorrectDataAge(field[1], value, 'Add a friend');
         cy.getFriends(idUser).then(res => {
             expect(value).not.equal(res[res.length - 1].age);
         });

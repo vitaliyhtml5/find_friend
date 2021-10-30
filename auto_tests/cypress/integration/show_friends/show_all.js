@@ -120,12 +120,7 @@ describe(`User shows friend's data on Main page`, () => {
     });
 
     it(`User views empty state in the table if friends haven't been added`, () => {
-        cy.getToken(data.registeredUserEmpty.email, data.registeredUserEmpty.password).then(token => {
-            cy.setCookie('token', token);
-            cy.reload();
-            cy.get('.show_all').should('have.class', 'empty-state-main');
-            cy.get('.table-data').should('not.be.visible');
-        });
+        cy.emptyStateMain('.show_all', '.table-data');
     });
 
     function checkSortData(dataArr, column) {

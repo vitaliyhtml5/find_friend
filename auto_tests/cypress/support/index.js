@@ -7,6 +7,7 @@ import './components/fill_main_data';
 import './components/alerts';
 import './components/view_password';
 import './components/switch_tab';
+import './components/empty_state';
 import './validation/empty_data';
 import './validation/incorrect_length';
 import './validation/incorrect_data';
