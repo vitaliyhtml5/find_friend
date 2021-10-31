@@ -545,6 +545,11 @@ input:focus {
 	background-color: #fafafa;
 	transform: translateX(-50%);
 }
+.modal-avatar {
+	top: 35px;
+	overflow-y: scroll;
+	height: 90%;
+}
 .modal-profile h3,
 .modal-avatar h3 {
 	margin-bottom: 30px;
