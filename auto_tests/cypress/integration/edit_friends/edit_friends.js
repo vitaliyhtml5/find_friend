@@ -1,6 +1,6 @@
 ///<reference types="Cypress"/>
 
-//Errors occurs when runner starts 2+ tests due to Cypress limitation with customized dropdowns
+//Errors occurs when runner checks elements which are downloaded by JS in customized dropdowns (Cypress limitation)
 
 describe('User edits a friend in Edit friends tab', () => {
     let idUser;
