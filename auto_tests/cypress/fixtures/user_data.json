@@ -39,7 +39,7 @@
     "hobbyFormat": ["電腦遊戲", "Компьютерные игры", "ריחן"],
     "hobbyLength": ["Largest swimming pool"]
   },
-  "correctEmail": ["test@test.io ", " lorem@gmail.com", "manager@yahoo.net"],
+  "correctEmail": ["lorem@gmail.com", "manager@yahoo.net"],
   "incorrectEmail": ["@example.com", "abs.mail.com", "abc@405@gmail.com", "abc.def@mail", "abc.def@mail.c"],
   "incorrectEmailLength": ["tevxslqozqf@dbtest.io"],
   "correctPassword": [" 1234567890", "&%@!#*.'/<>[]{} ", "()|_=+-/,?:;", "EOPABSRZ>=N", "wingzoifgsdxvjuarniq", "Az@lor_e65Y4"],

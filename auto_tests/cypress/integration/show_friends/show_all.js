@@ -92,7 +92,7 @@ describe(`User shows friend's data on Main page`, () => {
             cy.wait(500);
             const searchVal = dataArr[random(dataArr.length)];
             cy.get('.search-wrap input').type(searchVal).should('have.value', searchVal);
-            cy.get(`.table-data tbody tr td:nth-child(${index})`).should('have.text', searchVal);
+            cy.get(`.table-data tbody tr td:nth-child(${index})`).eq(0).should('have.text', searchVal);
             cy.get('.search-wrap input').type(searchVal).clear();
         }  
         //Age wasn't checked due Cypress limitation

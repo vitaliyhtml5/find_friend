@@ -23,7 +23,7 @@ describe('User edits a friend in Edit friends tab', () => {
         cy.switchTab(2, 3, '.change_friend');
     });
     
-    it('User chooses a friend', () => {
+    it.skip('User chooses a friend', () => {
         cy.getFriends(idUser).then(res => {
             let randomUser = random(res.length);
             cy.get('.list-name').click();
@@ -34,7 +34,7 @@ describe('User edits a friend in Edit friends tab', () => {
         });
     });
 
-    it('User edits a friend successfully', () => {
+    it.skip('User edits a friend successfully', () => {
         const dataArr = [data.newUser.name[random(data.newUser.name.length)], data.newUser.age[random(data.newUser.age.length)], data.newUser.hobby[random(data.newUser.hobby.length)]];
         let randomUser;
 
@@ -67,7 +67,7 @@ describe('User edits a friend in Edit friends tab', () => {
         cy.checkAlert('Please choose a friend');
     });
 
-    it('[Negative] User tries to edit a friend with empty fields', () => {
+    it.skip('[Negative] User tries to edit a friend with empty fields', () => {
         cy.get('.list-name').click();
         cy.get('.list-name li').eq(1).click({force: true});
         cy.emptyField(field[0], 'Edit a friend');
@@ -77,7 +77,7 @@ describe('User edits a friend in Edit friends tab', () => {
         cy.emptyField(field[2], 'Edit a friend');        
     });
 
-    it('[Negative] User tries to edit a friend with incorrect length of fields', () => {
+    it.skip('[Negative] User tries to edit a friend with incorrect length of fields', () => {
         const value = [data.incorrectUserData.nameLength[0], data.incorrectUserData.ageLength[0], data.incorrectUserData.hobbyLength[0]];
         cy.getFriends(idUser).then(res => {
             const userData = [res[0].name, res[0].age, res[0].hobby];
@@ -92,7 +92,7 @@ describe('User edits a friend in Edit friends tab', () => {
         });
     });
 
-    it('[Negative] User tries to edit a friend with incorrect data of name/hobby', () => {
+    it.skip('[Negative] User tries to edit a friend with incorrect data of name/hobby', () => {
         const value = [data.incorrectUserData.nameFormat[random(data.incorrectUserData.nameFormat.length-1)], data.incorrectUserData.hobbyFormat[random(data.incorrectUserData.hobbyFormat.length-1)]];
 
         cy.getFriends(idUser).then(res => {
@@ -106,7 +106,7 @@ describe('User edits a friend in Edit friends tab', () => {
         });
     });
 
-    it('[Negative] User tries to edit a friend with incorrect data of age', () => {
+    it.skip('[Negative] User tries to edit a friend with incorrect data of age', () => {
         const value = data.incorrectUserData.ageFormat[random(data.incorrectUserData.ageFormat.length-1)];
 
         cy.getFriends(idUser).then(res => {
