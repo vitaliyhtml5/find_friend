@@ -1,7 +1,5 @@
 ///<reference types="Cypress" />
 
-//Errors occurs when runner checks elements which are downloaded by JS in customized dropdowns (Cypress limitation)
-
 describe('User deletes a friend in Delete friends tab', () => {
     let idUser;
     let random = length => Math.floor(Math.random() * length);
@@ -22,29 +20,34 @@ describe('User deletes a friend in Delete friends tab', () => {
         cy.switchTab(3, 2, '.delete_friend');
     });
 
-    it.skip('User chooses a friend', () => {
+    it('User chooses a friend', () => {
         cy.getFriends(idUser).then(res => {
             let randomUser = random(res.length);
-            cy.get('.list-name').click();
-            cy.get('.list-name li').eq(randomUser).click({force: true});
-            cy.get('.delete_friend td').eq(0).should('have.text', res[randomUser - 1].name);
-            cy.get('.delete_friend td').eq(1).should('have.text', res[randomUser - 1].age);
-            cy.get('.delete_friend td').eq(2).should('have.text', res[randomUser  -1].hobby);
+            cy.switchTab(3, 2, '.delete_friend').then(() => {
+                cy.wait(500);
+                cy.get('.list-name').click();
+                cy.get('.list-name li').eq(randomUser).click({force: true});
+                cy.get('.delete_friend td').eq(0).should('have.text', res[randomUser - 1].name);
+                cy.get('.delete_friend td').eq(1).should('have.text', res[randomUser - 1].age);
+                cy.get('.delete_friend td').eq(2).should('have.text', res[randomUser  -1].hobby);
+            });    
         });
     });
 
-    it.skip('User deletes a friend successfully', () => {
+    it('User deletes a friend successfully', () => {
         addFriend();
         cy.getFriends(idUser).then(res => {
-            const id = res[res.length - 1].id;
-            cy.get('.list-name').click();
-            cy.get('.list-name li').eq(id-1).click({force: true});
-            cy.wait(500);
-            cy.contains('button', 'Delete a friend').click();
-            cy.checkAlert('Friend was removed');
-            cy.get('.delete_friend td').eq(0).should('not.have.text');
-            cy.get('.delete_friend td').eq(1).should('not.have.text');
-            cy.get('.delete_friend td').eq(2).should('not.have.text');
+            cy.switchTab(3, 2, '.delete_friend').then(() => {
+                cy.wait(500);
+                cy.get('.list-name').click();
+                cy.get('.list-name li').eq(res.length - 1).click({force: true});
+                cy.wait(500);
+                cy.contains('button', 'Delete a friend').click();
+                cy.checkAlert('Friend was removed');
+                cy.get('.delete_friend td').eq(0).should('not.have.text');
+                cy.get('.delete_friend td').eq(1).should('not.have.text');
+                cy.get('.delete_friend td').eq(2).should('not.have.text');
+            });    
         });
     });
 

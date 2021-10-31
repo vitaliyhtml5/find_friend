@@ -1,7 +1,5 @@
 ///<reference types="Cypress"/>
 
-//Errors occurs when runner checks elements which are downloaded by JS in customized dropdowns (Cypress limitation)
-
 describe('User edits a friend in Edit friends tab', () => {
     let idUser;
     let random = length => Math.floor(Math.random() * length);
@@ -23,33 +21,39 @@ describe('User edits a friend in Edit friends tab', () => {
         cy.switchTab(2, 3, '.change_friend');
     });
     
-    it.skip('User chooses a friend', () => {
+    it('User chooses a friend', () => {
         cy.getFriends(idUser).then(res => {
             let randomUser = random(res.length);
-            cy.get('.list-name').click();
-            cy.get('.list-name li').eq(randomUser).click({force: true});
-            cy.get(field[0]).should('have.value', res[randomUser - 1].name);
-            cy.get(field[1]).should('have.value', res[randomUser - 1].age);
-            cy.get(field[2]).should('have.value', res[randomUser  -1].hobby);
+            cy.switchTab(2, 3, '.change_friend').then(() => {
+                cy.wait(500);
+                cy.get('.list-name').click();
+                cy.get('.list-name li').eq(randomUser).click({force: true});
+                cy.get(field[0]).should('have.value', res[randomUser - 1].name);
+                cy.get(field[1]).should('have.value', res[randomUser - 1].age);
+                cy.get(field[2]).should('have.value', res[randomUser  -1].hobby);
+            }); 
         });
     });
 
-    it.skip('User edits a friend successfully', () => {
+    it('User edits a friend successfully', () => {
         const dataArr = [data.newUser.name[random(data.newUser.name.length)], data.newUser.age[random(data.newUser.age.length)], data.newUser.hobby[random(data.newUser.hobby.length)]];
         let randomUser;
 
         cy.getFriends(idUser).then(res => {
             randomUser = random(res.length);
-            cy.get('.list-name').click();
-            cy.get('.list-name li').eq(randomUser).click({force: true});
-            cy.get(field[0]).clear().type(dataArr[0]).should('have.value', dataArr[0]);
-            cy.get(field[1]).clear().type(dataArr[1]).should('have.value', dataArr[1]);
-            cy.get(field[2]).clear().type(dataArr[2]).should('have.value', dataArr[2]);
-            cy.contains('button', 'Edit a friend').click();
-            cy.checkAlert('Friend was updated');
-            cy.get(field[0]).should('not.have.value');
-            cy.get(field[1]).should('not.have.value');
-            cy.get(field[2]).should('not.have.value');
+            cy.switchTab(2, 3, '.change_friend').then(() => {
+                cy.wait(500);
+                cy.get('.list-name').click();
+                cy.get('.list-name li').eq(randomUser).click({force: true});
+                cy.get(field[0]).clear().type(dataArr[0]).should('have.value', dataArr[0]);
+                cy.get(field[1]).clear().type(dataArr[1]).should('have.value', dataArr[1]);
+                cy.get(field[2]).clear().type(dataArr[2]).should('have.value', dataArr[2]);
+                cy.contains('button', 'Edit a friend').click();
+                cy.checkAlert('Friend was updated');
+                cy.get(field[0]).should('not.have.value');
+                cy.get(field[1]).should('not.have.value');
+                cy.get(field[2]).should('not.have.value');
+            });    
         });
         cy.getFriends(idUser).then(res => {
             expect(res[randomUser - 1].name).equal(dataArr[0]);
@@ -67,54 +71,67 @@ describe('User edits a friend in Edit friends tab', () => {
         cy.checkAlert('Please choose a friend');
     });
 
-    it.skip('[Negative] User tries to edit a friend with empty fields', () => {
-        cy.get('.list-name').click();
-        cy.get('.list-name li').eq(1).click({force: true});
-        cy.emptyField(field[0], 'Edit a friend');
-        cy.get(field[0]).type('John');
-        cy.emptyField(field[1], 'Edit a friend');
-        cy.get(field[1]).type(25);
-        cy.emptyField(field[2], 'Edit a friend');        
-    });
-
-    it.skip('[Negative] User tries to edit a friend with incorrect length of fields', () => {
-        const value = [data.incorrectUserData.nameLength[0], data.incorrectUserData.ageLength[0], data.incorrectUserData.hobbyLength[0]];
-        cy.getFriends(idUser).then(res => {
-            const userData = [res[0].name, res[0].age, res[0].hobby];
+    it('[Negative] User tries to edit a friend with empty fields', () => {
+        cy.switchTab(2, 3, '.change_friend').then(() => {
+            cy.wait(500);
             cy.get('.list-name').click();
             cy.get('.list-name li').eq(1).click({force: true});
-            cy.incorrectLengthText(field[0], value[0], 'Edit a friend');
-            cy.get(field[0]).clear().type('John');
-            cy.incorrectLengthAge(field[1], value[1], 'Edit a friend');
-            cy.get(field[1]).clear().type(25);
-            cy.incorrectLengthText(field[2], value[2], 'Edit a friend');
-            checkFriend(userData);
+            cy.emptyField(field[0], 'Edit a friend');
+            cy.get(field[0]).type('John');
+            cy.emptyField(field[1], 'Edit a friend');
+            cy.get(field[1]).type(25);
+            cy.emptyField(field[2], 'Edit a friend');
+        });         
+    });
+
+    it('[Negative] User tries to edit a friend with incorrect length of fields', () => {
+        const value = [data.incorrectUserData.nameLength[0], data.incorrectUserData.ageLength[0], data.incorrectUserData.hobbyLength[0]];
+
+        cy.getFriends(idUser).then(res => {
+            const userData = [res[0].name, res[0].age, res[0].hobby];
+            cy.switchTab(2, 3, '.change_friend').then(() => {
+                cy.wait(500);
+                cy.get('.list-name').click();
+                cy.get('.list-name li').eq(1).click({force: true});
+                cy.incorrectLengthText(field[0], value[0], 'Edit a friend');
+                cy.get(field[0]).clear().type('John');
+                cy.incorrectLengthAge(field[1], value[1], 'Edit a friend');
+                cy.get(field[1]).clear().type(25);
+                cy.incorrectLengthText(field[2], value[2], 'Edit a friend');
+                checkFriend(userData);
+            });
         });
     });
 
-    it.skip('[Negative] User tries to edit a friend with incorrect data of name/hobby', () => {
+    it('[Negative] User tries to edit a friend with incorrect data of name/hobby', () => {
         const value = [data.incorrectUserData.nameFormat[random(data.incorrectUserData.nameFormat.length-1)], data.incorrectUserData.hobbyFormat[random(data.incorrectUserData.hobbyFormat.length-1)]];
 
         cy.getFriends(idUser).then(res => {
             const userData = [res[0].name, res[0].age, res[0].hobby];
-            cy.get('.list-name').click();
-            cy.get('.list-name li').eq(1).click({force: true});
-            cy.incorrectDataText(field[0], value[0], 'Edit a friend');
-            cy.get(field[0]).clear().type('John');
-            cy.incorrectDataText(field[2], value[1], 'Edit a friend');
-            checkFriend(userData);
+            cy.switchTab(2, 3, '.change_friend').then(() => {
+                cy.wait(500);
+                cy.get('.list-name').click();
+                cy.get('.list-name li').eq(1).click({force: true});
+                cy.incorrectDataText(field[0], value[0], 'Edit a friend');
+                cy.get(field[0]).clear().type('John');
+                cy.incorrectDataText(field[2], value[1], 'Edit a friend');
+                checkFriend(userData);
+            });    
         });
     });
 
-    it.skip('[Negative] User tries to edit a friend with incorrect data of age', () => {
+    it('[Negative] User tries to edit a friend with incorrect data of age', () => {
         const value = data.incorrectUserData.ageFormat[random(data.incorrectUserData.ageFormat.length-1)];
 
         cy.getFriends(idUser).then(res => {
             const userData = [res[0].name, res[0].age, res[0].hobby];
-            cy.get('.list-name').click();
-            cy.get('.list-name li').eq(1).click({force: true});
-            cy.incorrectDataAge(field[1], value, 'Edit a friend');
-            checkFriend(userData);
+            cy.switchTab(2, 3, '.change_friend').then(() => {
+                cy.wait(500);
+                cy.get('.list-name').click();
+                cy.get('.list-name li').eq(1).click({force: true});
+                cy.incorrectDataAge(field[1], value, 'Edit a friend');
+                checkFriend(userData);
+            });
         });
     });
 
