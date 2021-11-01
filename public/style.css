@@ -167,6 +167,9 @@ main {
 	cursor: pointer;
 	transition: .4s;
 }
+.btn_red {
+	background-color: #f35e5e !important;
+}
 .delete_friend button {
 	margin-top: 20px !important;
 }
@@ -178,6 +181,9 @@ main {
 .overlay-avatar button:hover {
 	background-color: #4848b5;
 }
+.btn_red:hover {
+	background-color: #fa4c4f !important;
+}
 .content-block button:active,
 .login-wrap button:active,
 .error-page_btn:active,
@@ -185,6 +191,9 @@ main {
 .modal-profile button:active,
 .overlay-avatar button:active {
 	background-color: #3c3c95;
+}
+.btn_red:active {
+	background-color: #e93a3d !important;
 }
 .search-wrap {
 	position: relative;
