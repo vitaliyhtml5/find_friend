@@ -12,7 +12,7 @@ router.post('/add_user', (req, res) => {
             if (err) {
                 res.status(400).send(err);
             } else {
-                res.send(data);
+                res.status(201).send(data);
             }
         });
     } catch(e) {
